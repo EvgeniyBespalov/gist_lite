@@ -1,4 +1,6 @@
 class GistsController < ApplicationController
+  before_filter :authenticate_user!, only: [:show, :edit, :create, :update, :destroy]
+  before_action :set_user
   before_action :set_gist, only: [:show, :edit, :update, :destroy]
 
   respond_to :html
@@ -37,6 +39,10 @@ class GistsController < ApplicationController
   end
 
   private
+    def set_user
+      @user = current_user    
+    end
+    
     def set_gist
       @gist = Gist.find(params[:id])
     end
