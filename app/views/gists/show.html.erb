@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>File name:</strong>
+  <%= @gist.file_name %>
+</p>
+
+<p>
+  <strong>Text:</strong>
+  <%= @gist.text %>
+</p>
+
+<%= link_to 'Edit', edit_gist_path(@gist) %> |
+<%= link_to 'Back', gists_path %>

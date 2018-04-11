@@ -1,0 +1,29 @@
+<h1>Listing gists</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>File name</th>
+      <th>Text</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @gists.each do |gist| %>
+      <tr>
+        <td><%= gist.file_name %></td>
+        <td><%= gist.text %></td>
+        <td><%= link_to 'Show', gist %></td>
+        <td><%= link_to 'Edit', edit_gist_path(gist) %></td>
+        <td><%= link_to 'Destroy', gist, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Gist', new_gist_path %>
