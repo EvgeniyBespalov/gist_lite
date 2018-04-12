@@ -44,14 +44,14 @@
         <td>
         </td>
         <td>
-          <div >
-          <div align="left" style="display: inline;">
-            <%= f.submit %>
-          </div>
-          <div style="display: inline;" align="right">
-            <%= link_to 'Show', @gist %>
-            <%= link_to 'Back', gists_path %>
-          <div>
+          <div style="display: box; box-orient: horizontal;">
+            <div style="display: inline; float: left;">
+              <%= f.submit %>
+            </div>
+            <div style="display: inline; float: right;">
+              <%= link_to 'Show', @gist %>
+              <%= link_to 'Back', gists_path %>
+            </div>
           </div>
         </td>
         <td></td>
