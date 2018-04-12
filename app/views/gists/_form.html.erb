@@ -11,24 +11,59 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :file_name %><br>
-    <%= f.text_field :file_name %>
-  </div>
-  <div class="field">
-    <%= f.label :text %><br>
 
-    <div id="editor"></div>
-    <%= f.hidden_field :text %>
-  </div>
-  
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+
+<table width="100%">
+  <thead>
+    <tr>
+      <th></th>
+      <th width="80%"></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+      <tr>
+        <td></td>
+        <td>
+          <div align="left"><%= f.text_field :file_name %><div>
+        </td>
+        <td></td>
+      </tr>
+      
+      <tr>
+        <td></td>
+        <td>
+          <div id="editor"></div>
+          <%= f.hidden_field :text %>
+        </td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>
+        </td>
+        <td>
+          <div >
+          <div align="left" style="display: inline;">
+            <%= f.submit %>
+          </div>
+          <div style="display: inline;" align="right">
+            <%= link_to 'Show', @gist %>
+            <%= link_to 'Back', gists_path %>
+          <div>
+          </div>
+        </td>
+        <td></td>
+      </tr>
+  </tbody>
+</table>
+
+
 <% end %>
 
 <script>
+
   var editor = ace.edit("editor", {
     theme: "ace/theme/tomorrow_night_blue",
     mode: "ace/mode/html",
@@ -36,7 +71,7 @@
     maxLines: 30,
     minLines: 10
   });
-  editor.setValue(document.getElementById("gist_text").value);
+  editor.setValue(document.getElementById("gist_text").value, -1);
   
   editor.on("change", function () {
     document.getElementById("gist_text").value = editor.getValue()

@@ -1,21 +1,46 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>File name:</strong>
-  <%= @gist.file_name %>
-</p>
-    
-<p>    
-  <strong>Text:</strong>
-  
-    <div id="editor"></div>
-</p>
 
-<%= link_to 'Edit', edit_gist_path(@gist) %>
-<%= link_to 'Back', gists_path %>
+<table width="100%">
+  <thead>
+    <tr>
+      <th></th>
+      <th width="80%"></th>
+      <th></th>
+    </tr>
+  </thead>
 
+  <tbody>
+      <tr>
+        <td></td>
+        <td>
+          <div align="left"><%= @gist.file_name %><div>
+        </td>
+        <td></td>
+      </tr>      
+      <tr>
+        <td></td>
+        <td>
+          <input type="hidden" value="<%= @gist.text %>" id="text_editor"/>
+          <div id="editor"></div>
+        </td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>
+          <div align="right">
+            <%= link_to 'Edit', edit_gist_path(@gist) %>
+            <%= link_to 'Back', gists_path %>
+          <div>
+        </td>
+        <td></td>
+      </tr>
+  </tbody>
+</table>
 
 <script>
+
   var editor = ace.edit("editor", {
     readOnly: true,
     theme: "ace/theme/tomorrow_night_blue",
@@ -24,7 +49,7 @@
     maxLines: 30,
     minLines: 10
   });
-  editor.setValue("<%= @gist.text %>");
-  
-  
+
+  editor.setValue(document.getElementById("text_editor").value, -1);
+
 </script>
