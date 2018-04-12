@@ -17,9 +17,28 @@
   </div>
   <div class="field">
     <%= f.label :text %><br>
-    <%= f.text_field :text %>
+
+    <div id="editor"></div>
+    <%= f.hidden_field :text %>
   </div>
+  
+
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+<script>
+  var editor = ace.edit("editor", {
+    theme: "ace/theme/tomorrow_night_blue",
+    mode: "ace/mode/html",
+    autoScrollEditorIntoView: true,
+    maxLines: 30,
+    minLines: 10
+  });
+  editor.setValue(document.getElementById("gist_text").value);
+  
+  editor.on("change", function () {
+    document.getElementById("gist_text").value = editor.getValue()
+  });
+  
+</script>

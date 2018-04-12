@@ -45,4 +45,5 @@ end
 # gem 'debugger', group: [:development, :test]
 
 gem 'devise'
+#gem 'devise-i18n'
 #gem 'bootstrap', '~> 4.0.0'
