@@ -7,7 +7,6 @@
     
 <p>    
   <strong>Text:</strong>
-  <%= @gist.text %>
   
     <div id="editor"></div>
 </p>
@@ -18,13 +17,14 @@
 
 <script>
   var editor = ace.edit("editor", {
+    readOnly: true,
     theme: "ace/theme/tomorrow_night_blue",
     mode: "ace/mode/html",
     autoScrollEditorIntoView: true,
     maxLines: 30,
     minLines: 10
   });
-  editor.setValue(@gist.text);
+  editor.setValue("<%= @gist.text %>");
   
   
 </script>
