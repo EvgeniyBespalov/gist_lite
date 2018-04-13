@@ -1,5 +1,5 @@
 class GistsController < ApplicationController
-  before_filter :authenticate_user!, only: [:show, :edit, :create, :update, :destroy]
+  before_filter :authenticate_user!, except: [:index]
   before_action :set_user
   before_action :set_gist, only: [:show, :edit, :update, :destroy]
 
@@ -26,6 +26,7 @@ class GistsController < ApplicationController
 
   def create
     @gist = Gist.new(gist_params)
+    @gist.user = @user
     @gist.save
     respond_with(@gist)
   end

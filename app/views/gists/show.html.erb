@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+<h1>View gist</h1>
 
 
 <table width="100%">
@@ -14,8 +14,15 @@
       <tr>
         <td></td>
         <td>
-          <div align="left"><%= @gist.file_name %><div>
-        </td>
+          <div style="display: box; box-orient: horizontal;">
+            <div style="display: inline; float: left;">
+              <%= @gist.file_name %>
+            </div>
+            <div style="display: inline; float: right;">
+              <%= @gist.user.email %>
+            </div>
+          </div>
+          </td>
         <td></td>
       </tr>      
       <tr>

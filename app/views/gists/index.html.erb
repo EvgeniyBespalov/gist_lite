@@ -16,7 +16,14 @@
         <tr>
           <td></td>  
           <td>
-            <div align="left"><%= gist.file_name %><div>
+          <div style="display: box; box-orient: horizontal;">
+            <div style="display: inline; float: left;">
+              <%= gist.file_name %>
+            </div>
+            <div style="display: inline; float: right;">
+              <%= gist.user.email %>
+            </div>
+          </div>
           </td>
           <td></td>
         </tr>
@@ -34,7 +41,7 @@
           <td>
             <div align="right">
               <%= link_to 'Show', gist %>
-              <% if @user == gist.user %>
+              <% if @user != nil && @user == gist.user %>
                 <%= link_to 'Edit', edit_gist_path(gist) %>
                 <%= link_to 'Destroy', gist, method: :delete, data: { confirm: 'Are you sure?' } %>
               <% end %>
