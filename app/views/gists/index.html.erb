@@ -1,49 +1,50 @@
 <h1>Listing gists</h1>
-
+<div class="error"><%= @error %></div>
 <%= link_to 'New Gist', new_gist_path %>
 
-    <% @gists.each do |gist| %>
-<table width="100%">
-  <thead>
-    <tr>
-      <th></th>
-      <th width="80%"></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
+<% @gists.each do |gist| %>
+  <table width="100%">
+    <thead>
       <tr>
-        <td></td>
-
-        <td>
-          <div align="left"><%= gist.file_name %><div>
-        </td>
+        <th></th>
+        <th width="80%"></th>
+        <th></th>
       </tr>
-      
-      <tr>
-        <td></td>
-        <td>
-          <input type="hidden" value="<%= gist.text %>" id="text_editor_<%= gist.file_name %>"/>
-          <div id="editor_<%= gist.file_name %>"></div>
-        </td>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-        <td>
-          <div align="right">
-            <%= link_to 'Show', gist %>
-            <%= link_to 'Edit', edit_gist_path(gist) %>
-            <%= link_to 'Destroy', gist, method: :delete, data: { confirm: 'Are you sure?' } %>
-          <div>
-        </td>
-        <td></td>
-      </tr>
-  </tbody>
-</table>
-
-    <% end %>
+    </thead>
+  
+    <tbody>
+        <tr>
+          <td></td>  
+          <td>
+            <div align="left"><%= gist.file_name %><div>
+          </td>
+          <td></td>
+        </tr>
+        
+        <tr>
+          <td></td>
+          <td>
+            <input type="hidden" value="<%= gist.text %>" id="text_editor_<%= gist.file_name %>"/>
+            <div id="editor_<%= gist.file_name %>"></div>
+          </td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>
+            <div align="right">
+              <%= link_to 'Show', gist %>
+              <% if @user == gist.user || 1 == 1 %>
+                <%= link_to 'Edit', edit_gist_path(gist) %>
+                <%= link_to 'Destroy', gist, method: :delete, data: { confirm: 'Are you sure?' } %>
+              <% end %>
+            <div>
+          </td>
+          <td></td>
+        </tr>
+    </tbody>
+  </table>
+<% end %>
 
 
 
@@ -58,11 +59,10 @@
       mode: "ace/mode/html",
       autoScrollEditorIntoView: true,
       maxLines: 30,
-      minLines: 10
+      minLines: 5
     });
     
     editor.setValue(document.getElementById("text_" + editors[i].id).value, -1);
   }
-
 
 </script>

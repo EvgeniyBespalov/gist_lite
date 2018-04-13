@@ -6,6 +6,7 @@ class GistsController < ApplicationController
   respond_to :html
 
   def index
+    @error = params[:error]
     @gists = Gist.all
     respond_with(@gists)
   end
@@ -20,6 +21,7 @@ class GistsController < ApplicationController
   end
 
   def edit
+    @error = params[:error]
   end
 
   def create
@@ -29,13 +31,23 @@ class GistsController < ApplicationController
   end
 
   def update
-    @gist.update(gist_params)
-    respond_with(@gist)
+    if @user != @gist.user
+      @error = "Access denied"
+      redirect_to edit_gist_path @gist, error: @error
+    else
+      @gist.update(gist_params)
+      respond_with(@gist)
+    end
   end
 
   def destroy
-    @gist.destroy
-    respond_with(@gist)
+    if @user != @gist.user
+      @error = "Access denied"
+      redirect_to gists_path error: @error
+    else
+      @gist.destroy
+      respond_with(@gist)
+    end
   end
 
   private
