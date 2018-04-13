@@ -30,7 +30,9 @@
         <td></td>
         <td>
           <div align="right">
-            <%= link_to 'Edit', edit_gist_path(@gist) %>
+            <% if @user == @gist.user %>
+              <%= link_to 'Edit', edit_gist_path(@gist) %>
+            <% end %>
             <%= link_to 'Back', gists_path %>
           <div>
         </td>

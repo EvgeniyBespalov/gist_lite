@@ -6,7 +6,7 @@ class GistsController < ApplicationController
   respond_to :html
 
   def index
-    @error = params[:error]
+    @gist_error = params[:gist_error]
     @gists = Gist.all
     respond_with(@gists)
   end
@@ -21,7 +21,7 @@ class GistsController < ApplicationController
   end
 
   def edit
-    @error = params[:error]
+    @gist_error = params[:gist_error]
   end
 
   def create
