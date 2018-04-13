@@ -1,5 +1,6 @@
 GistLite::Application.routes.draw do
   resources :gists
+  resources :comments
 
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
