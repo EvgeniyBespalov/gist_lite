@@ -34,7 +34,7 @@
           <td>
             <div align="right">
               <%= link_to 'Show', gist %>
-              <% if @user == gist.user || 1 == 1 %>
+              <% if @user == gist.user %>
                 <%= link_to 'Edit', edit_gist_path(gist) %>
                 <%= link_to 'Destroy', gist, method: :delete, data: { confirm: 'Are you sure?' } %>
               <% end %>
