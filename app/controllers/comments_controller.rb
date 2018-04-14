@@ -12,8 +12,6 @@ class CommentsController < ApplicationController
     
     comment.save
 
-    puts "+++++++++" + comment.id.to_s 
-    
     respond_to do |format|
       format.json { render json: {comment: comment, user_email: @user.email}}
     end
