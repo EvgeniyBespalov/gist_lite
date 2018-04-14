@@ -1,0 +1,105 @@
+<h1>View gist</h1>
+
+
+<table width="100%">
+  <thead>
+    <tr>
+      <th></th>
+      <th width="80%"></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+      <tr>
+        <td></td>
+        <td>
+          <div style="display: box; box-orient: horizontal;">
+            <div style="display: inline; float: left;">
+              <%= @gist.file_name %>
+            </div>
+            <div style="display: inline; float: right;">
+              <%= @gist.user.email %>
+            </div>
+          </div>
+          </td>
+        <td></td>
+      </tr>      
+      <tr>
+        <td></td>
+        <td>
+          <input type="hidden" value="<%= @gist.text %>" id="text_editor"/>
+          <div id="editor"></div>
+        </td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>
+          <div style="display: box; box-orient: horizontal;">
+            <div style="display: inline; float: left;">
+              <input value="Comment add" type="button" id="action_comment_new_to_gist_<%= @gist.id %>" onclick="commentNew(this.id, <%= @gist.id %>)">
+            </div>
+            <div align="right">
+              <% if @user != nil && @user == gist.user %>
+                <%= link_to 'Edit', edit_gist_path(gist) %>
+                <%= link_to 'Destroy', gist, method: :delete, data: { confirm: 'Are you sure?' } %>
+              <% end %>
+            <div>
+          </div>
+        </td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>
+          <ul class="list-group" id="comments_gist_<%= @gist.id %>">
+            <li class="list-group-item"><div align="center">Comments</div></li>
+            <% @gist.comments.each do |c| %>
+              <li class="list-group-item" id="comment_<%= c.id %>">
+                <div align="right"><%=c.user.email%></div>
+                <input type="hidden" value="<%= c.text %>" id="text_editorcomment_<%= c.id %>"/>
+                <div id="editorcomment_<%= c.id %>"></div>
+              </li>
+            <%end%>
+          </ul>
+        </td>
+        <td></td>
+      </tr>
+  </tbody>
+</table>
+
+
+
+
+
+<script>
+
+  var editor = ace.edit("editor", {
+    readOnly: true,
+    theme: "ace/theme/tomorrow_night_blue",
+    mode: "ace/mode/html",
+    autoScrollEditorIntoView: true,
+    maxLines: 30,
+    minLines: 10
+  });
+
+  editor.setValue(document.getElementById("text_editor").value, -1);
+
+var editorcomments = document.querySelectorAll('[id^="editorcomment_"]');
+
+  for (var i = 0; i < editorcomments.length; i++) {
+    var editor = ace.edit(editorcomments[i].id, {
+      readOnly: true,
+      theme: "ace/theme/crimson_editor",
+      mode: "ace/mode/html",
+      autoScrollEditorIntoView: true,
+      maxLines: 30,
+      minLines: 2
+    });
+    editor.setShowPrintMargin(false);
+    editor.setValue(document.getElementById("text_" + editorcomments[i].id).value, -1);
+  }
+
+
+</script>

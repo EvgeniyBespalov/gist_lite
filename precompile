@@ -1,0 +1,5 @@
+git add *.rb *.erb *.html *.css *.scss *.js *.yml config.ru Gemfile Gemfile.lock Rakefile "bin/bundle" "bin/rails" "bin/rake"
+git commit -m "test "
+git push origin master
+git push heroku master
+# *.scss  *.jpg *.coffee Capfile

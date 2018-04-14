@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>GistLite</title>
+ 
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+  <script src="https://ace.c9.io/build/src/ace.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+
+<div align="right">
+<% if user_signed_in? %>
+<%=@user.email%>
+<%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "btn btn-info"%>
+<%else%>
+<%= link_to "Log In", new_user_session_path, method: :get, class: "btn btn-info"%>
+<%end%>
+</div>
+<div align="center">
+  <%= yield %>
+</div>
+</body>
+</html>

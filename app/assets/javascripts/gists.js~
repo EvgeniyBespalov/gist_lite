@@ -1,0 +1,21 @@
+# Place all the behaviors and hooks related to the matching controller here.
+# All this logic will automatically be available in application.js.
+# You can use CoffeeScript in this file: http://coffeescript.org/
+
+function commentNew(id, gistId) {
+  var parse_result;
+  $.ajax({
+    type: "GET",
+    url: "/comments/new",
+    dataType: 'json',
+    data: { gist_id: gistId },
+    success: function(result) {
+      alert (result.gist);
+      //document.getElementById(id).value = result.value;
+      return false;
+    },
+    error: function() {
+      return false
+    }
+  });
+}
