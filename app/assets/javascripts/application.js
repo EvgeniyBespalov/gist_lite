@@ -1,6 +1,6 @@
 //= require jquery
 //= require jquery_ujs
-
+//= require turbolinks
 
 function commentNew(id, gistId) {
 
