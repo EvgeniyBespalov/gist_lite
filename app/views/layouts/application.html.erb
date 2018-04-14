@@ -10,13 +10,18 @@
 </head>
 <body>
 
-<div align="right">
-<% if user_signed_in? %>
-<%=@user.email%>
-<%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "btn btn-info"%>
-<%else%>
-<%= link_to "Log In", new_user_session_path, method: :get, class: "btn btn-info"%>
-<%end%>
+<div style="display: box; box-orient: horizontal;">
+  <div style="display: inline; float: left;">
+    <%= link_to "Gists", gists_path, class: "btn btn-info"%>
+  </div>
+  <div style="display: inline; float: right;">
+    <% if user_signed_in? %>
+    <%=@user.email%>
+    <%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "btn btn-info"%>
+    <%else%>
+    <%= link_to "Log In", new_user_session_path, method: :get, class: "btn btn-info"%>
+    <%end%>
+  </div>
 </div>
 <div align="center">
   <%= yield %>
