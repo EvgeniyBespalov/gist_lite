@@ -1,8 +1,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-@import "bootstrap-sprockets"
-@import "bootstrap"
+//= require bootstrap-sprockets
 
 
 function commentNew(id, gistId) {
