@@ -48,3 +48,4 @@ end
 gem 'devise'
 #gem 'devise-i18n'
 #gem 'bootstrap', '~> 4.0.0'
+gem 'anjlab-bootstrap-rails', '~> 3.0.0.3', :require => 'bootstrap-rails'
