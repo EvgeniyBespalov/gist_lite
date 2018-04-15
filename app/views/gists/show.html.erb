@@ -38,12 +38,12 @@
         <td>
           <div style="display: box; box-orient: horizontal;">
             <div style="display: inline; float: left;">
-              <% if @user != nil %>
+              <% if current_user %>
                 <input value="Comment add" type="button" id="action_comment_new_to_gist_<%= @gist.id %>" onclick="commentNew(this.id, <%= @gist.id %>)">
               <% end %>
             </div>
             <div align="right">
-              <% if @user != nil && @user == @gist.user %>
+              <% if current_user && current_user == @gist.user %>
                 <%= link_to 'Edit', edit_gist_path(@gist) %>
                 <%= link_to 'Destroy', @gist, method: :delete, data: { confirm: 'Are you sure?' } %>
               <% end %>

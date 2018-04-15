@@ -1,6 +1,5 @@
 class GistsController < ApplicationController
   before_filter :authenticate_user!, except: [:index, :show]
-  before_action :set_user
   before_action :set_gist, only: [:show, :edit, :update, :destroy]
 
   respond_to :html
@@ -26,13 +25,13 @@ class GistsController < ApplicationController
 
   def create
     @gist = Gist.new(gist_params)
-    @gist.user = @user
+    @gist.user = current_user
     @gist.save
     respond_with(@gist)
   end
 
   def update
-    if @user != @gist.user
+    if current_user != @gist.user
       @error = "Access denied"
       redirect_to edit_gist_path @gist, error: @error
     else
@@ -42,7 +41,7 @@ class GistsController < ApplicationController
   end
 
   def destroy
-    if @user != @gist.user
+    if current_user != @gist.user
       @error = "Access denied"
       redirect_to gists_path error: @error
     else
@@ -52,9 +51,6 @@ class GistsController < ApplicationController
   end
 
   private
-    def set_user
-      @user = current_user    
-    end
     
     def set_gist
       @gist = Gist.find(params[:id])
