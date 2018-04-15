@@ -3,17 +3,18 @@ class CommentsController < ApplicationController
   before_action :set_gist
   
   def create
-    if @user == nil
-    return
-    text = params[:comment]
-    
-    comment = Comment.new
-    comment.text = text
-    comment.user = @user
-    comment.gist = @gist
-    
-    comment.save
+    if @user != nil do
 
+      text = params[:comment]
+      
+      comment = Comment.new
+      comment.text = text
+      comment.user = @user
+      comment.gist = @gist
+      
+      comment.save
+      
+    end
     respond_to do |format|
       format.json { render json: {comment: comment, user_email: @user.email}}
     end
