@@ -29,7 +29,7 @@
           <td></td>
           <td>
             <input type="hidden" value="<%= gist.text %>" id="text_editor_<%= gist.id %>"/>
-            <div id="editor_<%= gist.id %>"></div>
+            <div id="editor_<%= gist.id %>" class="editor_index"></div>
           </td>
           <td></td>
         </tr>
@@ -48,24 +48,3 @@
     </tbody>
   </table>
 <% end %>
-
-
-
-<script>
-
-  var editors = document.querySelectorAll('[id^="editor_"]');
-  
-  for (var i = 0; i < editors.length; i++) {
-    var editor = ace.edit(editors[i].id, {
-      readOnly: true,
-      theme: "ace/theme/tomorrow_night_blue",
-      mode: "ace/mode/html",
-      autoScrollEditorIntoView: true,
-      maxLines: 30,
-      minLines: 5
-    });
-    editor.setShowPrintMargin(false);
-    editor.setValue(document.getElementById("text_" + editors[i].id).value, -1);
-  }
-
-</script>

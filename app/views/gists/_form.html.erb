@@ -37,7 +37,7 @@
       <tr>
         <td></td>
         <td>
-          <div id="editor"></div>
+          <div id="editor" class="editor__form"></div>
           <%= f.hidden_field :text %>
         </td>
         <td></td>
@@ -57,20 +57,3 @@
 
 
 <% end %>
-
-<script>
-
-  var editor = ace.edit("editor", {
-    theme: "ace/theme/tomorrow_night_blue",
-    mode: "ace/mode/html",
-    autoScrollEditorIntoView: true,
-    maxLines: 30,
-    minLines: 10
-  });
-  editor.setValue(document.getElementById("gist_text").value, -1);
-  
-  editor.on("change", function () {
-    document.getElementById("gist_text").value = editor.getValue()
-  });
-  
-</script>
