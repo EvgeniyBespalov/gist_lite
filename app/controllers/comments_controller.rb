@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
   before_action :set_gist
   
   def create
-    if @user != nil do
+    if @user != nil
 
       text = params[:comment]
       
