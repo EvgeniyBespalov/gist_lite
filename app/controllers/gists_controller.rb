@@ -23,7 +23,7 @@ class GistsController < ApplicationController
     @gist.user = current_user
     
     if @gist.save
-      redirect_to gist_path @gist
+      redirect_to gist_path(@gist)
     else
       render "new"
     end
@@ -36,10 +36,10 @@ class GistsController < ApplicationController
         return
       end
     else
-      flash[:gist_error] = "Access denied"
+      flash[:error] = "Access denied"
     end   
     
-    redirect_to gist_path @gist
+    redirect_to gist_path(@gist)
   end
 
   def destroy
@@ -47,8 +47,8 @@ class GistsController < ApplicationController
       @gist.destroy
       redirect_to gists_path
     else
-      flash[:gist_error] = "Access denied"
-      redirect_to gist_path @gist
+      flash[:error] = "Access denied"
+      redirect_to gist_path(@gist)
     end
   end
 
