@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
     gists_path
   end
   
-  def after_sign_out_path_for(resource)
-    gists_path
-  end
+#  def after_sign_out_path_for(resource)
+#    gists_path
+#  end
 end
