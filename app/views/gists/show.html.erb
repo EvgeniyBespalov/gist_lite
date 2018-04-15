@@ -14,15 +14,13 @@
       <tr>
         <td></td>
         <td>
-          <div style="display: box; box-orient: horizontal;">
-            <div style="display: inline; float: left;">
+            <div class="div_h_left">
               <%= @gist.file_name %>
             </div>
-            <div style="display: inline; float: right;">
+            <div class="div_h_right">
               <%= @gist.user.email %>
             </div>
           </div>
-          </td>
         <td></td>
       </tr>      
       <tr>
@@ -36,19 +34,17 @@
       <tr>
         <td></td>
         <td>
-          <div style="display: box; box-orient: horizontal;">
-            <div style="display: inline; float: left;">
+            <div class="div_h_left">
               <% if current_user %>
                 <input value="Comment add" type="button" id="action_comment_new_to_gist_<%= @gist.id %>" onclick="commentNew(this.id, <%= @gist.id %>)">
               <% end %>
             </div>
-            <div align="right">
+            <div class="div_h_right">
               <% if current_user && current_user == @gist.user %>
                 <%= link_to 'Edit', edit_gist_path(@gist) %>
                 <%= link_to 'Destroy', @gist, method: :delete, data: { confirm: 'Are you sure?' } %>
               <% end %>
             <div>
-          </div>
         </td>
         <td></td>
       </tr>
@@ -56,7 +52,9 @@
         <td></td>
         <td>
           <ul class="list-group" id="comments_gist_<%= @gist.id %>">
-            <li class="list-group-item"><div align="center">Comments</div></li>
+            <li class="list-group-item">
+              <div align="center">Comments</div>
+            </li>
             <% @gist.comments.each do |c| %>
               <li class="list-group-item" id="comment_<%= c.id %>">
                 <div align="right"><%=c.user.email%></div>

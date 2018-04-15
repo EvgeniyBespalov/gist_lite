@@ -16,14 +16,12 @@
         <tr>
           <td></td>  
           <td>
-          <div style="display: box; box-orient: horizontal;">
-            <div style="display: inline; float: left;">
+            <div class="div_h_left">
               <%= gist.file_name %>
             </div>
-            <div style="display: inline; float: right;">
+            <div class="div_h_right">
               <%= gist.user.email %>
             </div>
-          </div>
           </td>
           <td></td>
         </tr>
@@ -39,13 +37,11 @@
         <tr>
           <td></td>
           <td>
-            <div style="display: box; box-orient: horizontal;">
-              <div style="display: inline; float: right;">
-                <%= link_to 'Show', gist %>
-              </div>
-              <div style="display: inline; float: left;">
-                Insert comments count here
-              </div>
+            <div class="div_h_left">
+              Insert comments count here
+            </div>
+            <div class="div_h_right">
+              <%= link_to 'Show', gist %>
             </div>
           </td>
           <td></td>

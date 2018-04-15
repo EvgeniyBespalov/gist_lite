@@ -15,3 +15,18 @@
 .error {
   color: red;
 }
+
+.div_h_container {
+  display: box; 
+  box-orient: horizontal;
+}
+
+.div_h_left {
+  display: inline;
+  float: left;
+}
+
+.div_h_right {
+  display: inline;
+  float: right;
+}
