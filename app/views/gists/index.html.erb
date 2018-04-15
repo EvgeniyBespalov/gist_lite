@@ -1,50 +1,25 @@
 <h1>Listing gists</h1>
 <%= link_to 'New Gist', new_gist_path %>
 
-<% @gists.each do |gist| %>
-  <table width="100%">
-    <thead>
-      <tr>
-        <th></th>
-        <th width="80%"></th>
-        <th></th>
-      </tr>
-    </thead>
-  
-    <tbody>
-        <tr>
-          <td></td>  
-          <td>
-            <div class="div_h_left">
-              <%= gist.file_name %>
-            </div>
-            <div class="div_h_right">
-              <%= gist.user.email %>
-            </div>
-          </td>
-          <td></td>
-        </tr>
-        
-        <tr>
-          <td></td>
-          <td>
-            <input type="hidden" value="<%= gist.text %>" id="text_editor_<%= gist.id %>"/>
-            <div id="editor_<%= gist.id %>" class="editor_index"></div>
-          </td>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>
-            <div class="div_h_left">
-              Insert comments count here
-            </div>
-            <div class="div_h_right">
-              <%= link_to 'Show', gist %>
-            </div>
-          </td>
-          <td></td>
-        </tr>
-    </tbody>
-  </table>
-<% end %>
+<div class="div_container">
+  <% @gists.each do |gist| %>
+    <div class="div_h_container">
+      <div class="div_h_left">
+        <%= gist.file_name %>
+      </div>
+      <div class="div_h_right">
+        <%= gist.user.email %>
+      </div>
+    </div>
+    <input type="hidden" value="<%= gist.text %>" id="text_editor_<%= gist.id %>"/>
+    <div id="editor_<%= gist.id %>" class="editor_index"></div>
+    <div class="div_h_container">
+      <div class="div_h_left">
+        Insert comments count here
+      </div>
+      <div class="div_h_right">
+        <%= link_to 'Show', gist %>
+      </div>
+    </div>
+  <% end %>
+</div>

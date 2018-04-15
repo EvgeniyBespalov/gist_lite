@@ -2,7 +2,6 @@
   <% if @gist.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@gist.errors.count, "error") %> prohibited this gist from being saved:</h2>
-
       <ul>
       <% @gist.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
@@ -11,47 +10,15 @@
     </div>
   <% end %>
 
-
-<table width="100%">
-  <thead>
-    <tr>
-      <th></th>
-      <th width="80%"></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-      <tr>
-        <td></td>
-        <td>
-          <div align="left">
-            <%= f.text_field :file_name %>
-          <div>
-        </td>
-        <td></td>
-      </tr>
-      
-      <tr>
-        <td></td>
-        <td>
-          <div id="editor" class="editor__form"></div>
-          <%= f.hidden_field :text %>
-        </td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>
-        </td>
-        <td>
-          <div class="class="div_h_left"">
-            <%= f.submit %>
-          </div>
-        </td>
-        <td></td>
-      </tr>
-  </tbody>
-</table>
-
+  <div class="div_container">
+    <div align="left">
+      <%= f.text_field :file_name %>
+    </div>
+    <div id="editor" class="editor__form"></div>
+    <%= f.hidden_field :text %>
+    <div align="left">
+      <%= f.submit %>
+    </div>
+  </div>
 
 <% end %>

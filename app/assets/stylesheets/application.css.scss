@@ -19,14 +19,22 @@
 .div_h_container {
   display: box; 
   box-orient: horizontal;
+  overflow: hidden;
 }
 
 .div_h_left {
   display: inline;
   float: left;
+  overflow: hidden;
 }
 
 .div_h_right {
   display: inline;
   float: right;
+  overflow: hidden;
+}
+.div_container {
+  align: center;
+  width: 80%;
+  overflow: hidden;
 }
