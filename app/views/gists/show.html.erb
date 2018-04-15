@@ -39,7 +39,7 @@
               <% end %>
             </div>
             <div class="div_h_right">
-              <% if current_user%><!-- && current_user == @gist.user -->
+              <% if current_user && current_user == @gist.user %>
                 <%= link_to 'Edit', edit_gist_path(@gist) %>
                 <%= link_to 'Destroy', @gist, method: :delete, data: { confirm: 'Are you sure?' } %>
               <% end %>
