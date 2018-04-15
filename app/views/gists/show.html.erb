@@ -15,7 +15,7 @@
   <div class="div_h_container">
     <div class="div_h_left">
       <% if current_user %>
-        <input value="Comment add" type="button" id="action_comment_new_to_gist_<%= @gist.id %>" onclick="commentNew(this.id, <%= @gist.id %>)"/>
+        <input value="Add a comment" type="button" id="action_comment_new_to_gist_<%= @gist.id %>" onclick="commentNew(this.id, <%= @gist.id %>)"/>
       <% end %>
     </div>
     <div class="div_h_right">
