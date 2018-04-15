@@ -21,14 +21,20 @@ class GistsController < ApplicationController
   def create
     @gist = Gist.new(gist_params)
     @gist.user = current_user
-    @gist.save
     
-    redirect_to gist_path @gist
+    if @gist.save
+      redirect_to gist_path @gist
+    else
+      render "new"
+    end
   end
 
   def update
     if current_user == @gist.user
-      @gist.update(gist_params)
+      unless @gist.update(gist_params)
+        render "edit"
+        return
+      end
     else
       flash[:gist_error] = "Access denied"
     end   
