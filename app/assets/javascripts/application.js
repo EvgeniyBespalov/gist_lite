@@ -26,7 +26,7 @@ function commentNew(id, gistId) {
   var buttonCommentCreate = document.createElement("input");
   buttonCommentCreate.type = "button"
   buttonCommentCreate.id = "btn_create_comment_gist_" + gistId;
-  buttonCommentCreate.value = "Comment save";
+  buttonCommentCreate.value = "Save";
   buttonCommentCreate.onclick = function() { commentCreate(gistId) };
   li.appendChild(buttonCommentCreate);
   
