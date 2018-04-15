@@ -5,48 +5,44 @@ class GistsController < ApplicationController
   respond_to :html
 
   def index
-    @gist_error = params[:gist_error]
     @gists = Gist.all
-    respond_with(@gists)
   end
 
   def show
-    respond_with(@gist)
   end
 
   def new
     @gist = Gist.new
-    respond_with(@gist)
   end
 
   def edit
-    @gist_error = params[:gist_error]
   end
 
   def create
     @gist = Gist.new(gist_params)
     @gist.user = current_user
     @gist.save
-    respond_with(@gist)
+    
+    redirect_to gist_path @gist
   end
 
   def update
-    if current_user != @gist.user
-      @error = "Access denied"
-      redirect_to edit_gist_path @gist, error: @error
-    else
+    if current_user == @gist.user
       @gist.update(gist_params)
-      respond_with(@gist)
-    end
+    else
+      flash[:gist_error] = "Access denied"
+    end   
+    
+    redirect_to gist_path @gist
   end
 
   def destroy
-    if current_user != @gist.user
-      @error = "Access denied"
-      redirect_to gists_path error: @error
-    else
+    if current_user == @gist.user
       @gist.destroy
-      respond_with(@gist)
+      redirect_to gists_path
+    else
+      flash[:gist_error] = "Access denied"
+      redirect_to gist_path @gist
     end
   end
 
