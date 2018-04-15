@@ -38,7 +38,9 @@
         <td>
           <div style="display: box; box-orient: horizontal;">
             <div style="display: inline; float: left;">
-              <input value="Comment add" type="button" id="action_comment_new_to_gist_<%= @gist.id %>" onclick="commentNew(this.id, <%= @gist.id %>)">
+              <% if @user != nil %>
+                <input value="Comment add" type="button" id="action_comment_new_to_gist_<%= @gist.id %>" onclick="commentNew(this.id, <%= @gist.id %>)">
+              <% end %>
             </div>
             <div align="right">
               <% if @user != nil && @user == @gist.user %>

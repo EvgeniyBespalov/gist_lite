@@ -3,6 +3,8 @@ class CommentsController < ApplicationController
   before_action :set_gist
   
   def create
+    if @user == nil
+    return
     text = params[:comment]
     
     comment = Comment.new
