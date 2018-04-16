@@ -1,0 +1,8 @@
+<%= form_for(comment) do |f| %>
+    <div id="editor_comment" class="editor_comment"></div>
+    <%= f.hidden_field :text %>
+    <%= f.hidden_field :gist_id %>
+    <div align="left">
+      <%= f.submit %>
+    </div>
+<% end %>

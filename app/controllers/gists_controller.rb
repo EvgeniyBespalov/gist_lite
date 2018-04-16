@@ -14,6 +14,9 @@ class GistsController < ApplicationController
   end
 
   def show
+    @comment_new = Comment.new(gist: @gist) if current_user 
+    #, user: current_user - пользователь не инициализируется так как при записи 
+    #испольуется текущий пользователь
   end
 
   def new

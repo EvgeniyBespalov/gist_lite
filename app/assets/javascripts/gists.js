@@ -10,7 +10,9 @@ $(document).on('turbolinks:load', function() {
   if($('.editor__form').length > 0){
     GistEditEditorInit();
   }
-
+    if($('.editor_comment').length > 0){
+    CommentNewEditorInit();
+  }  
 });
 
 function GistsIndexEditorsInit() {
@@ -38,12 +40,22 @@ function GistShowEditorsInit() {
   var editor = setEditor("editor");
   editor.setValue(document.getElementById("text_editor").value, -1);
 
-  var editorcomments = document.querySelectorAll('[id^="editorcomment_"]');
+  var editor_comments = document.querySelectorAll('[id^="editor_comment_"]');
 
-  for (var i = 0; i < editorcomments.length; i++) {
-    var editor_comment = setEditor(editorcomments[i].id, 2, true, "ace/theme/crimson_editor");
-    editor_comment.setValue(document.getElementById("text_" + editorcomments[i].id).value, -1);
+  for (var i = 0; i < editor_comments.length; i++) {
+    var editor_comment = setEditor(editor_comments[i].id, 2, true, "ace/theme/crimson_editor");
+    editor_comment.setValue(document.getElementById("text_" + editor_comments[i].id).value, -1);
   }
+}
+
+function CommentNewEditorInit() {
+  
+  var editor = setEditor("editor_comment", 10, false, "ace/theme/crimson_editor");
+  editor.setValue(document.getElementById("comment_text").value, -1);
+  
+  editor.on("change", function () {
+    document.getElementById("comment_text").value = editor.getValue()
+  });
 }
 
 function setEditor(id, min_lines = 10, read_only = true, theme = "ace/theme/tomorrow_night_blue") {

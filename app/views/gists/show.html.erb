@@ -13,11 +13,6 @@
   <input type="hidden" value="<%= @gist.text %>" id="text_editor"/>
   <div id="editor" class="editor_show"></div>
   <div class="div_h_container">
-    <div class="div_h_left">
-      <% if current_user %>
-        <input value="Add a comment" type="button" id="action_comment_new_to_gist_<%= @gist.id %>" onclick="commentNew(this.id, <%= @gist.id %>)"/>
-      <% end %>
-    </div>
     <div class="div_h_right">
       <% if current_user && current_user == @gist.user %>
         <%= link_to 'Edit', edit_gist_path(@gist) %>
@@ -31,12 +26,15 @@
         <div align="center">Comments</div>
       </li>
       <% @gist.comments.each do |c| %>
-        <li class="list-group-item" id="comment_<%= c.id %>">
-          <div align="right"><%=c.user.email%></div>
-          <input type="hidden" value="<%= c.text %>" id="text_editorcomment_<%= c.id %>"/>
-          <div id="editorcomment_<%= c.id %>"></div>
+        <li class="list-group-item" id="comment_<%= c.id %>"> 
+          <%= render 'comments/show', comment: c %>
         </li>
       <%end%>
+      <li class="list-group-item">
+        <%if @comment_new %>
+          <%= render 'comments/form', comment: @comment_new %>
+        <%end%>
+      </li>
     </ul>
   </div>
 </div>
