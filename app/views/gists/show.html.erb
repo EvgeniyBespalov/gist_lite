@@ -29,11 +29,11 @@
         <li class="list-group-item" id="comment_<%= c.id %>"> 
           <%= render 'comments/show', comment: c %>
         </li>
-      <%end%>
+      <% end %>
       <li class="list-group-item">
         <%if @comment_new %>
           <%= render 'comments/form', comment: @comment_new %>
-        <%end%>
+        <% end %>
       </li>
     </ul>
   </div>
