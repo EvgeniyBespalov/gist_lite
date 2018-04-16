@@ -5,7 +5,7 @@ class GistsController < ApplicationController
   
   respond_to :html
 
-  def index
+  def index    
     if params[:gists] == "my" && current_user
       @gists = Gist.where(user: current_user)
     else      

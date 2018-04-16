@@ -18,29 +18,14 @@ function GistsIndexEditorsInit() {
   var editors = document.querySelectorAll('[id^="editor_"]');
   
   for (var i = 0; i < editors.length; i++) {
-    var editor = ace.edit(editors[i].id, {
-      readOnly: true,
-      theme: "ace/theme/tomorrow_night_blue",
-      mode: "ace/mode/html",
-      autoScrollEditorIntoView: true,
-      maxLines: 30,
-      minLines: 5
-    });
-    editor.setShowPrintMargin(false);
+    var editor = setEditor(editors[i].id, 5);
     editor.setValue(document.getElementById("text_" + editors[i].id).value, -1);
   }
 }
 
 function GistEditEditorInit() {
   
-  var editor = ace.edit("editor", {
-    theme: "ace/theme/tomorrow_night_blue",
-    mode: "ace/mode/html",
-    autoScrollEditorIntoView: true,
-    maxLines: 30,
-    minLines: 10
-  });
-  editor.setShowPrintMargin(false);
+  var editor = setEditor("editor", 10, false);
   editor.setValue(document.getElementById("gist_text").value, -1);
   
   editor.on("change", function () {
@@ -49,30 +34,27 @@ function GistEditEditorInit() {
 }
 
 function GistShowEditorsInit() {
-  var editor = ace.edit("editor", {
-    readOnly: true,
-    theme: "ace/theme/tomorrow_night_blue",
-    mode: "ace/mode/html",
-    autoScrollEditorIntoView: true,
-    maxLines: 30,
-    minLines: 10
-  });
-  editor.setShowPrintMargin(false);
+  
+  var editor = setEditor("editor");
   editor.setValue(document.getElementById("text_editor").value, -1);
 
   var editorcomments = document.querySelectorAll('[id^="editorcomment_"]');
 
   for (var i = 0; i < editorcomments.length; i++) {
-    var editor = ace.edit(editorcomments[i].id, {
-      readOnly: true,
-      theme: "ace/theme/crimson_editor",
-      mode: "ace/mode/html",
-      autoScrollEditorIntoView: true,
-      maxLines: 30,
-      minLines: 2
-    });
-    editor.setShowPrintMargin(false);
-    editor.setValue(document.getElementById("text_" + editorcomments[i].id).value, -1);
+    var editor_comment = setEditor(editorcomments[i].id, 2, true, "ace/theme/crimson_editor");
+    editor_comment.setValue(document.getElementById("text_" + editorcomments[i].id).value, -1);
   }
 }
 
+function setEditor(id, min_lines = 10, read_only = true, theme = "ace/theme/tomorrow_night_blue") {
+  var editor = ace.edit(id, {
+      readOnly: read_only,
+      theme: theme,
+      mode: "ace/mode/html",
+      autoScrollEditorIntoView: true,
+      maxLines: 30,
+      minLines: min_lines
+    });
+    editor.setShowPrintMargin(false); 
+  return editor;
+}
