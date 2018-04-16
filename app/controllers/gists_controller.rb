@@ -50,7 +50,7 @@ class GistsController < ApplicationController
   private
     
   def set_gist
-    @gist = Gist.find(params[:id])
+    @gist = Gist.includes(:user, comments: :user).find(params[:id])
   end
 
   def gist_params
