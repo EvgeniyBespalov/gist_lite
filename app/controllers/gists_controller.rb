@@ -6,7 +6,11 @@ class GistsController < ApplicationController
   respond_to :html
 
   def index
-    @gists = Gist.all
+    if params[:gists] == "my" && current_user
+      @gists = Gist.where(user: current_user)
+    else      
+      @gists = Gist.all
+    end
   end
 
   def show
