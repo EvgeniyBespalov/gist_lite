@@ -5,11 +5,10 @@ class CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
     @comment.user = current_user
     
-    
-    
-    @comment.save
+    unless @comment.save
+      flash[:error] = "Don`t save comment: " + @comment.errors.full_messages.join(', ')
+    end 
     redirect_to gist_path(@comment.gist)
-    
   end  
   
   
