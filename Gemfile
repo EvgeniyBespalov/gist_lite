@@ -5,7 +5,7 @@ gem 'rails', '4.0.2'
 
 # Use sqlite3 as the database for Active Record
 #gem 'sqlite3'
-gem 'pg', '~> 0.11'
+gem 'pg', '~> 0.20.0'
 
 # Use SCSS for stylesheets
 #gem 'sass-rails', '~> 4.0.0'
@@ -50,3 +50,7 @@ gem 'devise'
 #gem 'devise-i18n'
 
 gem 'rails_12factor', group: :production
+
+#gem 'rspec', group: :development
+gem 'rspec-rails', group: [:development, :test]
+#gem 'rails-helper', group: [:development, :test]

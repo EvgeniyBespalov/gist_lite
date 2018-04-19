@@ -58,6 +58,11 @@ class GistsController < ApplicationController
 
   def gist_params
     params.require(:gist).permit(:file_name, :text)
+    puts "****"
+    puts params
+    puts "****"
+    puts params.require(:gist).permit(:file_name, :text)
+    puts "*********"
   end
   
   def user_valid
